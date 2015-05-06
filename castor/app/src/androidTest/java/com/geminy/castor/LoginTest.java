@@ -17,7 +17,7 @@ import android.support.test.espresso.matcher.ViewMatchers;
  *
  * Created by Max Kostin on 26.04.2015.
  */
-@RunWith(AndroidJUnit4.class)
+//@RunWith(AndroidJUnit4.class)
 @SmallTest
 public class LoginTest extends ActivityInstrumentationTestCase2<LoginActivity> {
 
