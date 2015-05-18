@@ -1,6 +1,20 @@
 apply plugin: 'com.android.application'
 
 android {
+
+    // see http://stackoverflow.com/questions/22467127/error-duplicate-files-during-packaging-of-apk
+    packagingOptions {
+        exclude 'LICENSE'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/license.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/NOTICE.txt'
+        exclude 'META-INF/notice.txt'
+    }
+
     compileSdkVersion 22
     buildToolsVersion "22.0.1"
 
@@ -10,6 +24,7 @@ android {
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -30,12 +45,14 @@ dependencies {
     // Optional
     compile 'com.android.support:support-annotations:21.0.3'
 
-    androidTestCompile ('com.android.support.test:runner:0.2') {
-        exclude module: 'support-annotations'
-    }
+    // see http://stackoverflow.com/questions/29857695/android-tests-build-error-multiple-dex-files-define-landroid-support-test-build
+    //androidTestCompile ('com.android.support.test:runner:0.2') {
+    //    exclude module: 'support-annotations'
+    //}
+
     androidTestCompile 'com.android.support.test.espresso:espresso-core:2.0'
 
-    // eSPRESSO CONTRIB MODULES
+    // Espresso contrib modules
     androidTestCompile ('com.android.support.test.espresso:espresso-contrib:2.0') {
         exclude module: 'support-annotations'
     }
